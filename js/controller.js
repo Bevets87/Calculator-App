@@ -21,7 +21,9 @@
       if (entry.length < 12) {
         if (entry[0] == '0') {
           entry.splice(0,1,e.target.value)
-        }  else {
+        } else if (e.target.value === '.' && entry.indexOf(e.target.value) >= 0) {
+          entry = entry 
+        } else {
           entry.push(e.target.value)
         }
       }
