@@ -17,12 +17,12 @@
     })
 
     self.view.bind('handleDigits', function (e) {
-      var { entry, expression, display } = self.model.state
+      var { entry, display } = self.model.state
       if (entry.length < 12) {
         if (entry[0] == '0') {
           entry.splice(0,1,e.target.value)
         } else if (e.target.value === '.' && entry.indexOf(e.target.value) >= 0) {
-          entry = entry 
+          entry = entry;
         } else {
           entry.push(e.target.value)
         }
@@ -56,6 +56,7 @@
           display = eval(expression.join(''))
           if (display.toString().length > 11) {
             display = display.toExponential(3)
+            display = display.toString()
           }
           expression = []
           expression.push(display)
@@ -65,7 +66,7 @@
       self.model.setState({
         entry: [],
         expression: expression,
-        display: display.toString()
+        display: display
       }, function (state) {
         self.view.render('displayResult', state.display)
       })
@@ -107,6 +108,7 @@
         display = eval(expression.join(''))
         if (display.toString().length > 11) {
           display = display.toExponential(3)
+          display = display.toString()
         }
         expression = []
         expression.push(display.toString())
