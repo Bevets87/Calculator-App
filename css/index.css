@@ -10,7 +10,7 @@ body {
   color: black;
   text-align: right;
   font-size: 30px;
-  overflow: hidden; }
+  padding-right: 5px; }
 
 #container {
   position: relative;

@@ -10,6 +10,11 @@
 
   View.prototype.bind = function (event, handler) {
     var self = this;
+    if (event === 'initCalculator') {
+      window.addEventListener('load', function () {
+          handler()
+      })
+    }
     for (var button in self.$buttons) {
       switch (self.$buttons[button].className) {
         case 'num':
